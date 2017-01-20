@@ -9,6 +9,9 @@ import Html.Events exposing (onClick)
 import Models exposing (Game(..))
 import Messages exposing (Msg(..))
 
+import Nim.Models exposing (Nim)
+import Nim.View
+
 
 view : Game -> Html Msg
 view game =
@@ -19,27 +22,17 @@ view game =
 page : Game -> Html Msg
 page game =
   case game of
-    NoGame ->
-      noGame
-
     NimGame nim ->
-      nimGame
+      nimGame nim
 
     WonGame ->
       wonGame
 
 
 --noGame : Game -> Html Msg overvej
-noGame : Html Msg
-noGame =
-  div []
-    [ text "noGame" ]
-
-
-nimGame : Html Msg
-nimGame =
-  div []
-    [ text "nimGame" ]
+nimGame : Nim -> Html Msg
+nimGame nim =
+  Nim.View.view nim |> Html.map NimMsg
 
 
 wonGame : Html Msg
