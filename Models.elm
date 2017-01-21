@@ -5,8 +5,21 @@ import Messages exposing (Msg)
 
 import Nim.Models exposing (Nim)
 
+--move init
+import ListZipper
+import Nim.Models
+import Nim.Players.Models
+import Nim.Heaps.Heap.Match
 
---move these
+match = Nim.Heaps.Heap.Match.init
+heap = ListZipper.init match |> ListZipper.insert match |> ListZipper.insert match
+heaps = ListZipper.init heap |> ListZipper.insert heap |> ListZipper.insert heap
+players = Nim.Players.Models.init 312
+nim = Nim.Models.init heaps players
+
+
+
+--move game module
 type Game
   = NimGame Nim
   | WonGame
@@ -34,7 +47,7 @@ nimGame nim =
 
 initialModel : Game
 initialModel =
-  wonGame
+  NimGame nim
 
 
 initialCommands : Cmd Msg

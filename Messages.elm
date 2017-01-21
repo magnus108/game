@@ -5,5 +5,4 @@ import Nim.Messages
 
 
 type Msg
-  = NoOp
-  | NimMsg Nim.Messages.Msg
+  = NimMsg Nim.Messages.Msg

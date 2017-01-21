@@ -1,5 +1,8 @@
 module Nim.Messages exposing (Msg(..))
 
 
+import Nim.Heaps.Messages
+
+
 type Msg
-  = NoOp
+  = HeapsMsg Nim.Heaps.Messages.Msg
